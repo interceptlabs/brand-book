@@ -1,0 +1,1003 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Intercept brand center — logos, color, type, patterns, downloads</title>
+  <meta name="description" content="The Intercept brand center. Download logos, copy color tokens, pull the type stack, and grab the Brand OS PDF.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@500;600;700&family=Inter:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      /* Hero channels — locked semantic roles */
+      --flarepop:   #ff00e5;   /* primary   */
+      --coolsweep:  #1a7aff;   /* secondary */
+      --wiretree:   #00d862;   /* tertiary  */
+
+      /* System states */
+      --siren:      #f50041;
+      --volts:      #f5c800;
+
+      /* Neutrals */
+      --halo:       #ffffff;
+      --halo-300:   #e6e9f5;
+      --halo-400:   #d1d6e6;
+      --halo-500:   #b8bed1;
+      --carbon-100: #3a3a4a;
+      --carbon-200: #2c2c3a;
+      --carbon-300: #1f1f2a;
+      --carbon-400: #14141c;
+      --carbon-500: #0a0a0f;
+      --earth:      #1e1405;
+
+      /* Type stack */
+      --font-display: 'Instrument Sans', system-ui, sans-serif;
+      --font-body:    'Inter', system-ui, sans-serif;
+      --font-mono:    'Geist Mono', ui-monospace, 'SF Mono', monospace;
+
+      --container: 1240px;
+      --r-s: 8px;
+      --r-m: 12px;
+      --r-l: 16px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      background: var(--carbon-500);
+      color: var(--halo);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: var(--coolsweep); text-decoration: none; transition: color .15s; }
+    a:hover { color: var(--flarepop); }
+
+    /* === Type === */
+    h1, h2, h3, h4 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin: 0 0 16px;
+      color: var(--halo);
+    }
+    h1 { font-size: clamp(48px, 7vw, 88px); letter-spacing: -0.03em; }
+    h2 { font-size: clamp(28px, 4vw, 40px); }
+    h3 { font-size: 22px; letter-spacing: -0.01em; }
+    h4 { font-size: 16px; font-family: var(--font-mono); font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--flarepop); }
+    p { margin: 0 0 16px; max-width: 60ch; }
+    .lede { font-size: 18px; color: var(--halo-400); max-width: 64ch; }
+    .muted { color: var(--halo-500); }
+    code, kbd { font-family: var(--font-mono); font-size: 0.9em; background: var(--carbon-300); padding: 2px 6px; border-radius: 4px; color: var(--halo-300); }
+
+    /* === Layout === */
+    .container { max-width: var(--container); margin: 0 auto; padding: 0 32px; }
+    section { padding: 96px 0; border-top: 1px solid var(--carbon-200); }
+    section:first-of-type { border-top: 0; }
+    section[data-anchor] { scroll-margin-top: 80px; }
+    .section-num {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--flarepop);
+      display: block;
+      margin-bottom: 8px;
+    }
+    .section-head { margin-bottom: 56px; }
+    .grid { display: grid; gap: 24px; }
+    .grid--2 { grid-template-columns: repeat(2, 1fr); }
+    .grid--3 { grid-template-columns: repeat(3, 1fr); }
+    .grid--4 { grid-template-columns: repeat(4, 1fr); }
+    .grid--auto { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+
+    /* === Top nav === */
+    .topbar {
+      position: sticky; top: 0; z-index: 30;
+      background: rgba(10, 10, 15, 0.86);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--carbon-200);
+    }
+    .topbar__inner {
+      display: flex; align-items: center; gap: 32px;
+      max-width: var(--container); margin: 0 auto;
+      padding: 16px 32px;
+    }
+    .topbar__logo svg { display: block; height: 28px; width: 119px; overflow: visible; }
+    .topbar nav { display: flex; gap: 28px; flex-wrap: wrap; }
+    .topbar nav a {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--halo-400);
+    }
+    .topbar nav a:hover { color: var(--halo); }
+    .topbar__cta {
+      margin-left: auto;
+      padding: 10px 18px;
+      background: var(--flarepop);
+      color: var(--carbon-500);
+      border-radius: 999px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .topbar__cta:hover { background: var(--halo); color: var(--carbon-500); }
+
+    /* === Hero === */
+    .hero { padding: 120px 0 80px; }
+    .hero__eyebrow {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--flarepop);
+      margin-bottom: 32px;
+    }
+    .hero h1 em { font-style: normal; color: var(--flarepop); }
+    .hero__lede {
+      font-size: 22px;
+      color: var(--halo-300);
+      max-width: 68ch;
+      margin-top: 24px;
+    }
+    .hero__cta-row {
+      margin-top: 48px;
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 24px;
+      border-radius: 999px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      transition: transform .15s, background .15s, color .15s;
+      cursor: pointer;
+      border: 0;
+    }
+    .btn--primary {
+      background: var(--flarepop);
+      color: var(--carbon-500);
+    }
+    .btn--primary:hover { background: var(--halo); color: var(--carbon-500); }
+    .btn--ghost {
+      background: transparent;
+      color: var(--halo);
+      border: 1px solid var(--carbon-100);
+    }
+    .btn--ghost:hover { border-color: var(--flarepop); color: var(--flarepop); }
+    .btn svg { width: 14px; height: 14px; flex: 0 0 14px; }
+
+    /* === The mark === */
+    .mark-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .lockup-card {
+      border-radius: var(--r-m);
+      overflow: hidden;
+      border: 1px solid var(--carbon-100);
+    }
+    .lockup-card__canvas {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 56px 28px;
+      min-height: 180px;
+    }
+    .lockup-card[data-bg="halo"]   .lockup-card__canvas { background: var(--halo); }
+    .lockup-card[data-bg="carbon"] .lockup-card__canvas { background: var(--carbon-500); }
+    .lockup-card__meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 18px;
+      background: var(--carbon-300);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--halo-400);
+    }
+    .lockup-card__meta b { color: var(--halo); font-weight: 600; }
+    .lockup-card__dl {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--coolsweep);
+      padding: 4px 10px;
+      border: 1px solid var(--carbon-100);
+      border-radius: 999px;
+      transition: all .15s;
+    }
+    .lockup-card__dl:hover {
+      color: var(--carbon-500);
+      background: var(--flarepop);
+      border-color: var(--flarepop);
+    }
+
+    /* The lockup itself */
+    .lockup-svg {
+      display: block;
+      width: 200px;
+      aspect-ratio: 324.005 / 76.2147;
+      overflow: visible;
+    }
+    .lockup--flarepop  { --logo-channel: var(--flarepop); }
+    .lockup--coolsweep { --logo-channel: var(--coolsweep); }
+    .lockup--wiretree  { --logo-channel: var(--wiretree); }
+    .lockup--on-halo   { --logo-wordmark: var(--carbon-500); }
+    .lockup--on-carbon { --logo-wordmark: var(--halo); }
+
+    /* Mark rules card */
+    .rules-card {
+      background: var(--carbon-300);
+      border-radius: var(--r-m);
+      padding: 32px;
+    }
+    .rules-card h3 { color: var(--halo); margin-bottom: 16px; }
+    .rules-card ul { list-style: none; padding: 0; margin: 0; }
+    .rules-card li {
+      position: relative;
+      padding-left: 28px;
+      margin-bottom: 12px;
+      font-size: 14px;
+      color: var(--halo-400);
+      line-height: 1.55;
+    }
+    .rules-card li::before {
+      content: "—";
+      position: absolute; left: 0;
+      color: var(--flarepop);
+      font-family: var(--font-mono);
+    }
+    .rules-card li b { color: var(--halo); font-weight: 500; }
+
+    /* === Color === */
+    .swatch {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      border-radius: var(--r-m);
+      overflow: hidden;
+      cursor: pointer;
+      background: transparent;
+      border: 0;
+      padding: 0;
+      width: 100%;
+      text-align: left;
+      transition: transform .18s ease;
+      font-family: inherit;
+    }
+    .swatch:hover { transform: translateY(-3px); }
+    .swatch:focus-visible { outline: 2px solid var(--flarepop); outline-offset: 4px; }
+    .swatch__chip {
+      height: 180px;
+      width: 100%;
+      display: block;
+      position: relative;
+    }
+    .swatch__chip::after {
+      /* Hairline divider that respects the chip color — only visible on the
+         transition between chip and meta, never as a full frame. */
+      content: "";
+      position: absolute;
+      left: 0; right: 0; bottom: 0;
+      height: 1px;
+      background: rgba(10, 10, 15, 0.18);
+    }
+    .swatch__meta {
+      padding: 16px 18px 18px;
+      background: var(--carbon-300);
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 12px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      letter-spacing: 0.04em;
+    }
+    .swatch__name {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .swatch__name b {
+      color: var(--halo);
+      font-weight: 600;
+      font-size: 13px;
+    }
+    .swatch__role {
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--halo-500);
+    }
+    .swatch__hex {
+      color: var(--halo-400);
+      font-variant-numeric: tabular-nums;
+      font-weight: 500;
+      font-size: 11px;
+      letter-spacing: 0.06em;
+      transition: color .15s;
+    }
+    .swatch:hover .swatch__hex { color: var(--halo); }
+    .swatch.copied .swatch__hex { color: var(--wiretree); }
+    .swatch.copied .swatch__hex::after {
+      content: "  ✓";
+      margin-left: 4px;
+    }
+
+    /* Pattern card — single wide variant */
+    .pattern-card--wide {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      align-items: stretch;
+    }
+    .pattern-card--wide .pattern-card__preview {
+      height: auto;
+      min-height: 260px;
+    }
+    .pattern-card--wide .pattern-card__meta {
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      justify-content: center;
+    }
+    .pattern-card--wide .pattern-card__meta .btn { align-self: flex-start; margin-top: 8px; }
+    @media (max-width: 760px) {
+      .pattern-card--wide { grid-template-columns: 1fr; }
+    }
+
+    /* === Type === */
+    .type-card {
+      background: var(--carbon-300);
+      border-radius: var(--r-m);
+      padding: 32px;
+    }
+    .type-card__role {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--flarepop);
+      margin-bottom: 8px;
+    }
+    .type-card__name {
+      font-size: 28px;
+      font-weight: 700;
+      margin: 0 0 24px;
+      color: var(--halo);
+    }
+    .type-sample {
+      font-size: 56px;
+      line-height: 1;
+      margin: 24px 0;
+      color: var(--halo);
+      letter-spacing: -0.02em;
+    }
+    .type-sample--display { font-family: var(--font-display); font-weight: 700; }
+    .type-sample--body    { font-family: var(--font-body);    font-weight: 500; font-size: 36px; line-height: 1.4; }
+    .type-sample--mono    { font-family: var(--font-mono);    font-weight: 500; font-size: 28px; letter-spacing: 0.02em; }
+    .type-card__meta {
+      margin-top: 24px;
+      padding-top: 24px;
+      border-top: 1px solid var(--carbon-100);
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--halo-500);
+      letter-spacing: 0.04em;
+    }
+    .type-card__meta b { color: var(--halo); font-weight: 500; }
+
+    /* === Voice === */
+    .voice-quote {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: clamp(28px, 4vw, 44px);
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      color: var(--halo);
+      max-width: 24ch;
+      margin: 0 0 24px;
+    }
+    .voice-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .voice-list li {
+      font-family: var(--font-display);
+      font-weight: 500;
+      font-size: 22px;
+      color: var(--halo-300);
+      line-height: 1.35;
+    }
+    .voice-list li b { color: var(--flarepop); font-weight: 500; }
+
+    /* === Pattern === */
+    .pattern-card {
+      background: var(--carbon-300);
+      border-radius: var(--r-m);
+      overflow: hidden;
+      border: 1px solid var(--carbon-100);
+    }
+    .pattern-card__preview {
+      height: 180px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .pattern-card__preview svg { width: 100%; height: 100%; }
+    .pattern-card__meta {
+      padding: 20px 24px;
+    }
+    .pattern-card__meta h3 { font-size: 18px; margin-bottom: 6px; }
+    .pattern-card__meta p { font-size: 13px; color: var(--halo-500); margin: 0 0 16px; }
+
+    /* === Downloads === */
+    .download-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+    .download-card {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      padding: 32px;
+      background: var(--carbon-300);
+      border-radius: var(--r-m);
+      border: 1px solid var(--carbon-100);
+      transition: border-color .15s;
+    }
+    .download-card:hover { border-color: var(--flarepop); }
+    .download-card h3 {
+      font-size: 20px;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .download-card h3 .ico {
+      width: 28px;
+      height: 28px;
+      border-radius: 6px;
+      background: var(--flarepop);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--carbon-500);
+      font-family: var(--font-mono);
+      font-weight: 700;
+      font-size: 12px;
+      flex: 0 0 28px;
+    }
+    .download-card p {
+      font-size: 14px;
+      color: var(--halo-400);
+      margin: 0;
+      flex: 1;
+    }
+    .download-card__meta {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.04em;
+      color: var(--halo-500);
+      margin-top: -8px;
+    }
+
+    /* === Footer === */
+    footer {
+      padding: 64px 0 48px;
+      border-top: 1px solid var(--carbon-200);
+    }
+    footer .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    footer .lockup-svg { width: 140px; }
+    footer .footer-meta {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.06em;
+      color: var(--halo-500);
+      text-align: right;
+    }
+    footer .footer-meta b { color: var(--halo); font-weight: 500; }
+    footer .footer-meta a { color: var(--coolsweep); }
+
+    @media (max-width: 880px) {
+      section { padding: 64px 0; }
+      .topbar nav { display: none; }
+      .mark-grid, .grid--2, .grid--3, .grid--4, .download-grid {
+        grid-template-columns: 1fr;
+      }
+      .hero { padding: 64px 0 48px; }
+      .hero__lede { font-size: 18px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ============ Lockup symbol library ============ -->
+<svg width="0" height="0" style="position:absolute;pointer-events:none;" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="intercept-lockup" viewBox="0 -9 324.005 76.2147" preserveAspectRatio="xMidYMid meet" overflow="visible">
+      <g transform="translate(0, -8.78)">
+        <g>
+          <path d="M297.818 26.7875L302.654 21.1099H320.22V26.7875H297.818Z" fill="#8846C9"/>
+          <path d="M305.145 7.49026L309.399 2.50825H311.162V7.49026H305.145Z" fill="#1DABC1"/>
+          <path d="M272.002 8.52534H265.143V12.8442H272.002V8.52534Z" fill="#8846C9"/>
+          <path d="M324.005 29.0518H315.901V35.2955H324.005V29.0518Z" fill="#1DABC1"/>
+        </g>
+        <g>
+          <path opacity="0.7"  d="M312.062 29.1486V63.5754H258.144L287.407 29.1486H312.062ZM312.062 26.7228H289.469L303.768 9.90058H312.062V26.7228ZM312.062 7.47382H305.83L312.062 0.14179V7.47382Z" fill="#A855F7"/>
+          <path opacity="0.42" d="M313.421 29.1485V63.4336H259.503L288.646 29.1485H313.421ZM313.421 26.7227H290.707L305.006 9.90044H313.421V26.7227ZM313.421 7.47368H307.069L313.421 4.57764e-05V7.47368Z" fill="#6366F1"/>
+          <path opacity="0.7"  d="M314.102 29.1493V63.9999H260.183L289.806 29.1493H314.102ZM314.102 26.7225H291.869L306.168 9.90025H314.102V26.7225ZM314.102 7.47349H308.23L314.102 0.566262V7.47349Z" fill="#22D3EE"/>
+        </g>
+        <path d="M313.195 29.2138V63.8583H259.277L288.724 29.2138H313.195ZM313.195 26.787H290.787L305.126 9.91692H313.195V26.787ZM313.195 7.49016H307.189L313.195 0.424735V7.49016Z" fill="var(--logo-channel, #FF00E5)"/>
+        <g>
+          <path d="M303.01 32.5619H299.063V35.3926H303.01V32.5619Z" fill="#5154C4"/>
+          <path d="M313.2 26.7875H297.818L302.654 21.1099H313.2V26.7875Z"  fill="#FF44F9"/>
+          <path d="M307.183 7.49016L311.162 2.81548V7.49016H307.183Z"       fill="#FFA9F8"/>
+          <path d="M299.063 32.5619H303.01V35.3926H299.063V32.5619Z"         fill="#FF52F9"/>
+        </g>
+      </g>
+      <g fill="var(--logo-wordmark, #ffffff)">
+        <path d="M4.85695 54.8039V11.2147H14.1252V54.8039H4.85695Z"/>
+        <path d="M18.3324 54.8039V23.9282H27.1794V31.1931H27.36V54.8039H18.3324ZM39.6976 54.8039V35.6731C39.6976 33.9779 39.2563 32.7066 38.3736 31.859C37.531 31.0115 36.2872 30.5877 34.6422 30.5877C33.2379 30.5877 31.9741 30.9106 30.8506 31.5563C29.7673 32.2021 28.9047 33.09 28.2627 34.2201C27.6609 35.3502 27.36 36.6821 27.36 38.2158L26.5776 30.7693C27.5807 28.5091 29.0451 26.7131 30.971 25.3812C32.937 24.0089 35.3443 23.3228 38.193 23.3228C41.6034 23.3228 44.2114 24.2915 46.0169 26.2288C47.8224 28.1257 48.7252 30.6886 48.7252 33.9174V54.8039H39.6976Z"/>
+        <path d="M66.4586 55.4698C62.5266 55.4698 59.5977 54.5214 57.6718 52.6244C55.7861 50.6871 54.8432 47.761 54.8432 43.8461V17.0266L63.8707 13.6363V44.1488C63.8707 45.521 64.2519 46.5502 65.0142 47.2363C65.7766 47.9224 66.9602 48.2655 68.5651 48.2655C69.1669 48.2655 69.7286 48.205 70.2502 48.0839C70.7718 47.9628 71.2934 47.8215 71.815 47.6601V54.5617C71.2934 54.8442 70.5511 55.0662 69.5882 55.2277C68.6654 55.3891 67.6222 55.4698 66.4586 55.4698ZM49.1258 30.8298V23.9282H71.815V30.8298H49.1258Z"/>
+        <path d="M88.2042 55.4093C84.7938 55.4093 81.8247 54.7434 79.297 53.4115C76.7693 52.0392 74.8033 50.1423 73.399 47.7206C72.0349 45.299 71.3528 42.5142 71.3528 39.3661C71.3528 36.1776 72.0349 33.3927 73.399 31.0115C74.8033 28.5898 76.7493 26.7131 79.2368 25.3812C81.7244 24.0089 84.6132 23.3228 87.9033 23.3228C91.073 23.3228 93.8213 23.9686 96.1484 25.2601C98.4755 26.5516 100.281 28.3477 101.565 30.6482C102.849 32.9488 103.491 35.6529 103.491 38.7606C103.491 39.4064 103.471 40.0118 103.431 40.5769C103.391 41.1015 103.33 41.606 103.25 42.0904H76.6489V36.0969H95.9679L94.4031 37.1866C94.4031 34.6843 93.8013 32.8479 92.5976 31.6774C91.434 30.4666 89.8292 29.8612 87.7829 29.8612C85.4157 29.8612 83.5701 30.6684 82.246 32.2828C80.9621 33.8972 80.3201 36.3188 80.3201 39.5477C80.3201 42.6958 80.9621 45.0367 82.246 46.5704C83.5701 48.1041 85.5361 48.8709 88.144 48.8709C89.5884 48.8709 90.8322 48.6288 91.8754 48.1444C92.9186 47.6601 93.701 46.8731 94.2226 45.7834H102.708C101.705 48.77 99.9801 51.1311 97.5327 52.8666C95.1253 54.5617 92.0158 55.4093 88.2042 55.4093Z"/>
+        <path d="M105.911 54.8039V23.9282H114.758V31.1931H114.939V54.8039H105.911ZM114.939 38.7001L114.156 31.3747C114.879 28.7513 116.062 26.7534 117.707 25.3812C119.352 24.0089 121.399 23.3228 123.846 23.3228C124.608 23.3228 125.17 23.4035 125.531 23.565V32.0406C125.331 31.9599 125.05 31.9196 124.689 31.9196C124.328 31.8792 123.886 31.859 123.365 31.859C120.476 31.859 118.349 32.3837 116.985 33.4331C115.621 34.4421 114.939 36.1978 114.939 38.7001Z"/>
+        <path d="M140.916 55.4093C137.706 55.4093 134.877 54.7232 132.43 53.3509C129.982 51.9787 128.056 50.0817 126.652 47.6601C125.288 45.2385 124.606 42.4738 124.606 39.3661C124.606 36.2583 125.288 33.4936 126.652 31.072C128.056 28.6504 129.982 26.7534 132.43 25.3812C134.877 24.0089 137.706 23.3228 140.916 23.3228C143.604 23.3228 146.011 23.8273 148.138 24.8363C150.304 25.805 152.07 27.157 153.434 28.8925C154.838 30.628 155.741 32.6662 156.142 35.0071H147.415C146.974 33.5138 146.172 32.3837 145.008 31.6169C143.885 30.85 142.561 30.4666 141.036 30.4666C139.592 30.4666 138.328 30.8298 137.244 31.5563C136.201 32.2828 135.399 33.312 134.837 34.6439C134.275 35.9758 133.995 37.5498 133.995 39.3661C133.995 41.1823 134.275 42.7563 134.837 44.0882C135.399 45.4201 136.201 46.4493 137.244 47.1758C138.328 47.9023 139.592 48.2655 141.036 48.2655C142.561 48.2655 143.885 47.8821 145.008 47.1152C146.172 46.3484 146.974 45.2183 147.415 43.725H156.142C155.741 46.0659 154.838 48.1041 153.434 49.8396C152.07 51.5751 150.304 52.9473 148.138 53.9563C146.011 54.925 143.604 55.4093 140.916 55.4093Z"/>
+        <path d="M172.668 55.4093C169.258 55.4093 166.289 54.7434 163.761 53.4115C161.233 52.0392 159.267 50.1423 157.863 47.7206C156.499 45.299 155.817 42.5142 155.817 39.3661C155.817 36.1776 156.499 33.3927 157.863 31.0115C159.267 28.5898 161.213 26.7131 163.701 25.3812C166.188 24.0089 169.077 23.3228 172.367 23.3228C175.537 23.3228 178.285 23.9686 180.612 25.2601C182.939 26.5516 184.745 28.3477 186.029 30.6482C187.313 32.9488 187.955 35.6529 187.955 38.7606C187.955 39.4064 187.935 40.0118 187.895 40.5769C187.854 41.1015 187.794 41.606 187.714 42.0904H161.113V36.0969H180.432L178.867 37.1866C178.867 34.6843 178.265 32.8479 177.062 31.6774C175.898 30.4666 174.293 29.8612 172.247 29.8612C169.88 29.8612 168.034 30.6684 166.71 32.2828C165.426 33.8972 164.784 36.3188 164.784 39.5477C164.784 42.6958 165.426 45.0367 166.71 46.5704C168.034 48.1041 170 48.8709 172.608 48.8709C174.052 48.8709 175.296 48.6288 176.339 48.1444C177.383 47.6601 178.165 46.8731 178.687 45.7834H187.172C186.169 48.77 184.444 51.1311 181.997 52.8666C179.589 54.5617 176.48 55.4093 172.668 55.4093Z"/>
+        <path d="M209.092 55.4093C206.163 55.4093 203.816 54.7232 202.051 53.3509C200.286 51.9787 199.242 50.1019 198.921 47.7206L199.403 47.6601V67.2147H190.375V23.9282H199.222V30.7693L198.681 30.6482C199.122 28.388 200.326 26.6122 202.292 25.3206C204.258 23.9888 206.685 23.3228 209.574 23.3228C212.342 23.3228 214.73 23.9888 216.736 25.3206C218.782 26.6122 220.347 28.4486 221.43 30.8298C222.553 33.2111 223.115 36.0161 223.115 39.245C223.115 42.5142 222.533 45.3596 221.37 47.7812C220.206 50.2028 218.581 52.0796 216.495 53.4115C214.409 54.7434 211.941 55.4093 209.092 55.4093ZM206.565 48.1444C208.691 48.1444 210.416 47.3776 211.74 45.8439C213.064 44.3102 213.727 42.1307 213.727 39.3055C213.727 36.4803 213.044 34.321 211.68 32.8277C210.356 31.3343 208.611 30.5877 206.444 30.5877C204.358 30.5877 202.633 31.3545 201.269 32.8882C199.944 34.3815 199.282 36.5408 199.282 39.3661C199.282 42.1913 199.944 44.3707 201.269 45.9044C202.633 47.3978 204.398 48.1444 206.565 48.1444Z"/>
+        <path d="M239.501 55.4698C235.569 55.4698 232.64 54.5214 230.714 52.6244C228.828 50.6871 227.885 47.761 227.885 43.8461V17.0266L236.913 13.6363V44.1488C236.913 45.521 237.294 46.5502 238.056 47.2363C238.819 47.9224 240.002 48.2655 241.607 48.2655C242.209 48.2655 242.771 48.205 243.292 48.0839C243.814 47.9628 244.335 47.8215 244.857 47.6601V54.5617C244.335 54.8442 243.593 55.0662 242.63 55.2277C241.707 55.3891 240.664 55.4698 239.501 55.4698ZM222.168 30.8298V23.9282H244.857V30.8298H222.168Z"/>
+      </g>
+    </symbol>
+  </defs>
+</svg>
+
+<!-- ============ Top nav ============ -->
+<header class="topbar">
+  <div class="topbar__inner">
+    <a href="#top" class="topbar__logo" aria-label="Intercept">
+      <svg class="lockup--flarepop lockup--on-carbon"><use href="#intercept-lockup"/></svg>
+    </a>
+    <nav>
+      <a href="#mark">Mark</a>
+      <a href="#color">Color</a>
+      <a href="#type">Type</a>
+      <a href="#voice">Voice</a>
+      <a href="#patterns">Patterns</a>
+      <a href="#downloads">Downloads</a>
+    </nav>
+    <a class="topbar__cta" href="#downloads">Get the kit</a>
+  </div>
+</header>
+
+<!-- ============ Hero ============ -->
+<section class="hero" id="top">
+  <div class="container">
+    <p class="hero__eyebrow">Intercept · brand center</p>
+    <h1>Brand assets <em>and guidelines.</em></h1>
+    <p class="hero__lede">The public home for the Intercept identity — logos, color, type, voice, and pattern. Everything below is the canonical version. Download what you need.</p>
+    <div class="hero__cta-row">
+      <a class="btn btn--primary" href="#downloads">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m-6-6l6 6 6-6"/><path d="M5 21h14"/></svg>
+        Download the kit
+      </a>
+      <a class="btn btn--ghost" href="https://interceptgroup.com" target="_blank" rel="noopener">
+        Visit interceptgroup.com
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ The mark ============ -->
+<section id="mark" data-anchor>
+  <div class="container">
+    <header class="section-head">
+      <span class="section-num">01 · The mark</span>
+      <h2>Logo and lockup.</h2>
+      <p class="lede">The wordmark sits in sentence case beside a triangle marker in one of three locked channel colors. Aspect 4.25 : 1. Never stretch, never recreate in CSS, never recolor outside this set.</p>
+    </header>
+
+    <div class="mark-grid">
+
+      <article class="lockup-card" data-bg="halo">
+        <div class="lockup-card__canvas">
+          <svg class="lockup-svg lockup--flarepop lockup--on-halo" aria-label="Intercept lockup, Flarepop, light bg"><use href="#intercept-lockup"/></svg>
+        </div>
+        <div class="lockup-card__meta">
+          <span><b>Flarepop</b> · primary</span>
+          <a class="lockup-card__dl" href="assets/logo/pack/intercept-lockup-baseline-flarepop-on-halo.svg" download>SVG ↓</a>
+        </div>
+      </article>
+
+      <article class="lockup-card" data-bg="halo">
+        <div class="lockup-card__canvas">
+          <svg class="lockup-svg lockup--coolsweep lockup--on-halo" aria-label="Intercept lockup, Coolsweep, light bg"><use href="#intercept-lockup"/></svg>
+        </div>
+        <div class="lockup-card__meta">
+          <span><b>Coolsweep</b> · secondary</span>
+          <a class="lockup-card__dl" href="assets/logo/pack/intercept-lockup-baseline-coolsweep-on-halo.svg" download>SVG ↓</a>
+        </div>
+      </article>
+
+      <article class="lockup-card" data-bg="halo">
+        <div class="lockup-card__canvas">
+          <svg class="lockup-svg lockup--wiretree lockup--on-halo" aria-label="Intercept lockup, Wiretree, light bg"><use href="#intercept-lockup"/></svg>
+        </div>
+        <div class="lockup-card__meta">
+          <span><b>Wiretree</b> · tertiary</span>
+          <a class="lockup-card__dl" href="assets/logo/pack/intercept-lockup-baseline-wiretree-on-halo.svg" download>SVG ↓</a>
+        </div>
+      </article>
+
+      <article class="lockup-card" data-bg="carbon">
+        <div class="lockup-card__canvas">
+          <svg class="lockup-svg lockup--flarepop lockup--on-carbon" aria-label="Intercept lockup, Flarepop, dark bg"><use href="#intercept-lockup"/></svg>
+        </div>
+        <div class="lockup-card__meta">
+          <span><b>Flarepop</b> · primary</span>
+          <a class="lockup-card__dl" href="assets/logo/pack/intercept-lockup-baseline-flarepop-on-carbon.svg" download>SVG ↓</a>
+        </div>
+      </article>
+
+      <article class="lockup-card" data-bg="carbon">
+        <div class="lockup-card__canvas">
+          <svg class="lockup-svg lockup--coolsweep lockup--on-carbon" aria-label="Intercept lockup, Coolsweep, dark bg"><use href="#intercept-lockup"/></svg>
+        </div>
+        <div class="lockup-card__meta">
+          <span><b>Coolsweep</b> · secondary</span>
+          <a class="lockup-card__dl" href="assets/logo/pack/intercept-lockup-baseline-coolsweep-on-carbon.svg" download>SVG ↓</a>
+        </div>
+      </article>
+
+      <article class="lockup-card" data-bg="carbon">
+        <div class="lockup-card__canvas">
+          <svg class="lockup-svg lockup--wiretree lockup--on-carbon" aria-label="Intercept lockup, Wiretree, dark bg"><use href="#intercept-lockup"/></svg>
+        </div>
+        <div class="lockup-card__meta">
+          <span><b>Wiretree</b> · tertiary</span>
+          <a class="lockup-card__dl" href="assets/logo/pack/intercept-lockup-baseline-wiretree-on-carbon.svg" download>SVG ↓</a>
+        </div>
+      </article>
+
+    </div>
+
+    <div class="grid grid--2" style="margin-top:48px;">
+      <div class="rules-card">
+        <h3>Clear-space & sizing</h3>
+        <ul>
+          <li><b>Clear-space</b> equals one triangle height on every side.</li>
+          <li><b>Minimum size</b> is 80px wide on screen, 20mm wide in print.</li>
+          <li><b>Aspect</b> stays at 4.25 : 1. Never stretch, squish, or rotate.</li>
+          <li><b>Pair the neutral</b> — Carbon wordmark on light, Halo wordmark on dark.</li>
+        </ul>
+      </div>
+      <div class="rules-card">
+        <h3>Don't</h3>
+        <ul>
+          <li><b>Recolor</b> outside Flarepop, Coolsweep, or Wiretree.</li>
+          <li><b>Overlap</b> headlines, body, CTAs, or functional UI.</li>
+          <li><b>Recreate</b> the wordmark in CSS or set it in ALL CAPS.</li>
+          <li><b>Add</b> drop-shadows, gradients, blurs, or scrim effects.</li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="muted" style="margin-top:32px;font-size:13px;">Need the full kit? The downloads section below has all 12 SVG variants — both alignment options, all three channels, both wordmark colors — plus EPS and PNG.</p>
+  </div>
+</section>
+
+<!-- ============ Color ============ -->
+<section id="color" data-anchor>
+  <div class="container">
+    <header class="section-head">
+      <span class="section-num">02 · Color</span>
+      <h2>Color palette.</h2>
+      <p class="lede">Three hero channels in fixed semantic roles, two neutrals for surface and ink, two states for system feedback. Click any swatch to copy its hex.</p>
+    </header>
+
+    <h4 style="margin-bottom:20px;">Hero channels</h4>
+    <div class="grid grid--3" style="margin-bottom:48px;">
+      <button class="swatch" data-hex="#FF00E5" type="button">
+        <div class="swatch__chip" style="background:#ff00e5;"></div>
+        <div class="swatch__meta">
+          <span class="swatch__name"><b>Flarepop</b><span class="swatch__role">primary</span></span>
+          <span class="swatch__hex">#FF00E5</span>
+        </div>
+      </button>
+      <button class="swatch" data-hex="#1A7AFF" type="button">
+        <div class="swatch__chip" style="background:#1a7aff;"></div>
+        <div class="swatch__meta">
+          <span class="swatch__name"><b>Coolsweep</b><span class="swatch__role">secondary</span></span>
+          <span class="swatch__hex">#1A7AFF</span>
+        </div>
+      </button>
+      <button class="swatch" data-hex="#00D862" type="button">
+        <div class="swatch__chip" style="background:#00d862;"></div>
+        <div class="swatch__meta">
+          <span class="swatch__name"><b>Wiretree</b><span class="swatch__role">tertiary</span></span>
+          <span class="swatch__hex">#00D862</span>
+        </div>
+      </button>
+    </div>
+
+    <h4 style="margin-bottom:20px;">Neutrals</h4>
+    <div class="grid grid--4" style="margin-bottom:48px;">
+      <button class="swatch" data-hex="#FFFFFF" type="button">
+        <div class="swatch__chip" style="background:#ffffff;"></div>
+        <div class="swatch__meta">
+          <span class="swatch__name"><b>Halo</b><span class="swatch__role">surface · light</span></span>
+          <span class="swatch__hex">#FFFFFF</span>
+        </div>
+      </button>
+      <button class="swatch" data-hex="#0A0A0F" type="button">
+        <div class="swatch__chip" style="background:#0a0a0f;"></div>
+        <div class="swatch__meta">
+          <span class="swatch__name"><b>Carbon</b><span class="swatch__role">surface · dark</span></span>
+          <span class="swatch__hex">#0A0A0F</span>
+        </div>
+      </button>
+      <button class="swatch" data-hex="#3A3A4A" type="button">
+        <div class="swatch__chip" style="background:#3a3a4a;"></div>
+        <div class="swatch__meta">
+          <span class="swatch__name"><b>Carbon 100</b><span class="swatch__role">ink · 1st step</span></span>
+          <span class="swatch__hex">#3A3A4A</span>
+        </div>
+      </button>
+      <button class="swatch" data-hex="#1E1405" type="button">
+        <div class="swatch__chip" style="background:#1e1405;"></div>
+        <div class="swatch__meta">
+          <span class="swatch__name"><b>Earth</b><span class="swatch__role">accent neutral</span></span>
+          <span class="swatch__hex">#1E1405</span>
+        </div>
+      </button>
+    </div>
+
+    <h4 style="margin-bottom:20px;">System</h4>
+    <div class="grid grid--2">
+      <button class="swatch" data-hex="#F50041" type="button">
+        <div class="swatch__chip" style="background:#f50041;"></div>
+        <div class="swatch__meta">
+          <span class="swatch__name"><b>Siren</b><span class="swatch__role">error · alert</span></span>
+          <span class="swatch__hex">#F50041</span>
+        </div>
+      </button>
+      <button class="swatch" data-hex="#F5C800" type="button">
+        <div class="swatch__chip" style="background:#f5c800;"></div>
+        <div class="swatch__meta">
+          <span class="swatch__name"><b>Volts</b><span class="swatch__role">warning · attention</span></span>
+          <span class="swatch__hex">#F5C800</span>
+        </div>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Type ============ -->
+<section id="type" data-anchor>
+  <div class="container">
+    <header class="section-head">
+      <span class="section-num">03 · Type</span>
+      <h2>Typography.</h2>
+      <p class="lede">A display face for confidence, a body face for clarity, a mono face for data and detail. All three are open-source and license-clean.</p>
+    </header>
+
+    <div class="grid grid--auto">
+
+      <div class="type-card">
+        <div class="type-card__role">Display · headings</div>
+        <div class="type-card__name">Instrument Sans</div>
+        <div class="type-sample type-sample--display">Fresh thinking.</div>
+        <div class="type-card__meta">
+          <span><b>Weights</b> 600 / 700</span>
+          <span><b>Use for</b> H1–H6</span>
+          <span><b>Source</b> <a href="https://fonts.google.com/specimen/Instrument+Sans" target="_blank" rel="noopener">Google Fonts</a></span>
+        </div>
+      </div>
+
+      <div class="type-card">
+        <div class="type-card__role">Body · long-form</div>
+        <div class="type-card__name">Inter</div>
+        <div class="type-sample type-sample--body">B2B marketing for global tech.</div>
+        <div class="type-card__meta">
+          <span><b>Weights</b> 400 / 500 / 600 / 700</span>
+          <span><b>Use for</b> Body, lede, UI</span>
+          <span><b>Source</b> <a href="https://rsms.me/inter/" target="_blank" rel="noopener">rsms.me/inter</a></span>
+        </div>
+      </div>
+
+      <div class="type-card">
+        <div class="type-card__role">Mono · accent &amp; data</div>
+        <div class="type-card__name">Geist Mono</div>
+        <div class="type-sample type-sample--mono">FROM AI TO BI</div>
+        <div class="type-card__meta">
+          <span><b>Weights</b> 400 / 500 / 600</span>
+          <span><b>Use for</b> Labels, callouts, data</span>
+          <span><b>Source</b> <a href="https://vercel.com/font" target="_blank" rel="noopener">vercel.com/font</a></span>
+        </div>
+      </div>
+
+    </div>
+
+    <p class="muted" style="margin-top:32px;font-size:13px;">All three sizes, weights, and line-heights are wired in <code>tokens.css</code> — download below.</p>
+  </div>
+</section>
+
+<!-- ============ Voice ============ -->
+<section id="voice" data-anchor>
+  <div class="container">
+    <header class="section-head">
+      <span class="section-num">04 · Voice</span>
+      <h2>Voice and messaging.</h2>
+      <p class="lede">Confidence comes from specificity, not adjectives. Speak the audience's language — name the technology, then say what we do with it.</p>
+    </header>
+
+    <div class="grid grid--2">
+
+      <div>
+        <h4 style="margin-bottom:16px;">Positioning</h4>
+        <p class="voice-quote">We do B2B marketing for global tech.</p>
+        <p class="muted" style="font-size:14px;">Sentence case. No exclamation marks. Not "we help with…"</p>
+      </div>
+
+      <div>
+        <h4 style="margin-bottom:16px;">Hero pattern</h4>
+        <ul class="voice-list">
+          <li>From <b>AI</b> to <b>BI</b>, we speak your language.</li>
+          <li>From <b>ERP</b> to <b>IoT</b>, we speak your language.</li>
+          <li>From <b>security</b> to <b>compliance</b>, we speak your language.</li>
+          <li>From <b>hybrid cloud</b> to <b>hyperautomation</b>, we speak your language.</li>
+          <li>From <b>low-code</b> to <b>DevSecOps</b>, we speak your language.</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ Patterns ============ -->
+<section id="patterns" data-anchor>
+  <div class="container">
+    <header class="section-head">
+      <span class="section-num">05 · Patterns</span>
+      <h2>Graphic patterns.</h2>
+      <p class="lede">Section textures, report covers, and editorial backgrounds. The browser generator outputs PNGs you can drop straight into any layout.</p>
+    </header>
+
+    <article class="pattern-card pattern-card--wide">
+      <div class="pattern-card__preview" style="background:#0a0a0f;">
+        <svg viewBox="0 0 240 120" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <pattern id="quilt" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+              <polygon points="0,0 20,0 0,20" fill="#ff00e5" opacity="0.85"/>
+              <polygon points="40,0 20,0 40,20" fill="#1a7aff" opacity="0.85"/>
+              <polygon points="0,40 20,40 0,20" fill="#00d862" opacity="0.85"/>
+              <polygon points="40,40 20,40 40,20" fill="#ff00e5" opacity="0.85"/>
+            </pattern>
+          </defs>
+          <rect width="240" height="120" fill="url(#quilt)"/>
+        </svg>
+      </div>
+      <div class="pattern-card__meta">
+        <h3>Fritz pattern generator</h3>
+        <p>17 pattern modes across tiling, overlap, and free layouts. Adjustable grid, triangle direction, opacity, scale, and blend. Color picks from Fritz channels or single-channel monochromes. Export PNGs one at a time or in batches of 12.</p>
+        <a class="btn btn--ghost" href="generators/fritz-pattern-public.html" target="_blank" rel="noopener">
+          Open generator
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg>
+        </a>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ============ Downloads ============ -->
+<section id="downloads" data-anchor>
+  <div class="container">
+    <header class="section-head">
+      <span class="section-num">06 · Downloads</span>
+      <h2>Logos, tokens, and tools.</h2>
+      <p class="lede">Logos, tokens, the Brand OS, and the pattern generators — all in one place.</p>
+    </header>
+
+    <div class="download-grid">
+
+      <a class="download-card" href="assets/logo/intercept-logo-pack.zip" download>
+        <h3><span class="ico">▲</span>Logo pack</h3>
+        <p>12 SVG lockups — 2 alignment options × 3 channels × 2 wordmark colors — plus the EPS source.</p>
+        <span class="download-card__meta">SVG · EPS · ZIP — 195 KB</span>
+      </a>
+
+      <a class="download-card" href="tokens.css" download>
+        <h3><span class="ico">{ }</span>Token sheet</h3>
+        <p>Color, type, spacing, radius, stroke, and opacity tokens as CSS custom properties. Drop into any project.</p>
+        <span class="download-card__meta">CSS — pre-wired for dark + light surfaces</span>
+      </a>
+
+      <a class="download-card" href="generators/fritz-pattern-public.html" target="_blank" rel="noopener">
+        <h3><span class="ico">⚙</span>Pattern generator</h3>
+        <p>Fritz triangle tessellations for section backgrounds, report covers, and editorial textures. Open in a browser, tweak, export PNG.</p>
+        <span class="download-card__meta">HTML — runs in-browser, no install</span>
+      </a>
+
+    </div>
+
+    <p class="muted" style="margin-top:32px;font-size:13px;">Working from a brand partner brief? The kit's local replica at <code>~/Creative-Projects/intercept-brand-kit/</code> has source SVGs, raw exports, and the cached Figma node index.</p>
+  </div>
+</section>
+
+<!-- ============ Footer ============ -->
+<footer>
+  <div class="container">
+    <svg class="lockup-svg lockup--flarepop lockup--on-carbon" aria-label="Intercept"><use href="#intercept-lockup"/></svg>
+    <div class="footer-meta">
+      <div><b>interceptgroup.com</b></div>
+      <div><a href="mailto:hello@interceptgroup.com">hello@interceptgroup.com</a></div>
+      <div style="margin-top:8px;color:var(--halo-500);">Fresh thinking starts here.</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Click swatch → copy hex
+  document.querySelectorAll('.swatch').forEach(btn => {
+    btn.addEventListener('click', async () => {
+      const hex = btn.dataset.hex;
+      try {
+        await navigator.clipboard.writeText(hex);
+      } catch (_) {
+        const ta = document.createElement('textarea');
+        ta.value = hex; document.body.appendChild(ta);
+        ta.select(); document.execCommand('copy');
+        ta.remove();
+      }
+      btn.classList.add('copied');
+      setTimeout(() => btn.classList.remove('copied'), 1200);
+    });
+  });
+</script>
+
+</body>
+</html>

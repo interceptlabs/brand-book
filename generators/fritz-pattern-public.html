@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fritz Patterns — public generator</title>
+<link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;600&family=Instrument+Sans:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#0A0A0F;color:#e0e0e0;font-family:'Geist Mono',ui-monospace,monospace;display:flex;height:100vh;overflow:hidden}
+  .side{width:340px;padding:24px 24px 32px;background:#141420;border-right:1px solid #2a2a36;overflow-y:auto;flex-shrink:0;font-size:13px}
+  .wrap{flex:1;display:flex;align-items:center;justify-content:center;overflow:hidden}
+  canvas{display:block}
+  h1{font-size:18px;font-weight:700;margin-bottom:4px;color:#fff;font-family:'Instrument Sans',sans-serif;letter-spacing:-0.01em}
+  .sub{font-size:11px;color:#888;margin-bottom:24px;letter-spacing:0.14em;text-transform:uppercase}
+  .sec{margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid #2a2a36}
+  .sec:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
+  .sec h2{font-size:10px;text-transform:uppercase;letter-spacing:0.18em;color:#FF00E5;margin-bottom:12px;font-weight:600}
+  label{display:flex;justify-content:space-between;font-size:12px;margin-bottom:6px;color:#ccc}
+  label .v{color:#888;font-variant-numeric:tabular-nums}
+  input[type="range"]{-webkit-appearance:none;width:100%;height:3px;background:#2a2a36;margin-bottom:14px;outline:none;border-radius:2px}
+  input[type="range"]::-webkit-slider-thumb{-webkit-appearance:none;width:13px;height:13px;border-radius:50%;background:#fff;cursor:pointer}
+  select{width:100%;padding:8px 10px;background:#1c1c2a;color:#ddd;border:1px solid #2a2a36;border-radius:4px;font-size:12px;margin-bottom:10px;font-family:inherit}
+  button{width:100%;padding:11px;background:#2a2a36;color:#ccc;border:none;border-radius:4px;font-size:11px;cursor:pointer;margin-bottom:8px;font-family:inherit;letter-spacing:0.1em;text-transform:uppercase;font-weight:600;transition:background .15s,color .15s}
+  button:hover{background:#3a3a4a;color:#fff}
+  .btn-primary{background:#FF00E5;color:#0A0A0F}
+  .btn-primary:hover{background:#fff;color:#0A0A0F}
+  .footer-note{font-size:10px;color:#666;margin-top:14px;line-height:1.5;letter-spacing:0.02em}
+  .footer-note a{color:#1A7AFF;text-decoration:none}
+  .footer-note a:hover{color:#FF00E5}
+</style>
+</head>
+<body>
+<div class="side">
+  <h1>Fritz Patterns</h1>
+  <div class="sub">Triangle pattern generator</div>
+
+  <div class="sec">
+    <h2>Pattern</h2>
+    <select id="mode">
+      <optgroup label="Tiling">
+        <option value="truchet">Truchet tile</option>
+        <option value="pinwheel">Pinwheel</option>
+        <option value="diamond">Diamond mirror</option>
+        <option value="herringbone">Herringbone</option>
+        <option value="quilt">Quilt block</option>
+      </optgroup>
+      <optgroup label="Overlap">
+        <option value="ov-stack">Stack (diagonal offset)</option>
+        <option value="ov-fan">Fan (shared origin)</option>
+        <option value="ov-nest">Nest (concentric)</option>
+        <option value="ov-mirror">Mirror pair</option>
+        <option value="ov-cross">Cross (90° overlap)</option>
+        <option value="ov-shingle">Shingle (roof tile)</option>
+        <option value="ov-weave">Weave (interlocking)</option>
+        <option value="ov-cascade">Cascade (waterfall)</option>
+        <option value="ov-kaleidoscope">Kaleidoscope</option>
+      </optgroup>
+      <optgroup label="Free">
+        <option value="scatter">Scatter</option>
+        <option value="radial">Radial burst</option>
+        <option value="wave">Wave field</option>
+      </optgroup>
+    </select>
+  </div>
+
+  <div class="sec">
+    <h2>Grid</h2>
+    <label>Columns <span class="v" id="v-cols">10</span></label>
+    <input type="range" id="cols" min="2" max="40" step="1" value="10">
+    <label>Rows <span class="v" id="v-rows">7</span></label>
+    <input type="range" id="rows" min="2" max="30" step="1" value="7">
+    <label>Cell size <span class="v" id="v-cell">80</span></label>
+    <input type="range" id="cell" min="20" max="200" step="2" value="80">
+    <label>Gap <span class="v" id="v-gap">0</span></label>
+    <input type="range" id="gap" min="0" max="30" step="1" value="0">
+  </div>
+
+  <div class="sec">
+    <h2>Triangle</h2>
+    <label>Direction</label>
+    <select id="facing">
+      <option value="right">Facing right (90° at bottom-left)</option>
+      <option value="left">Facing left (90° at bottom-right)</option>
+    </select>
+    <label>Per-tile facing</label>
+    <select id="tile-facing">
+      <option value="fixed">All same direction</option>
+      <option value="alternate-col">Alternate by column</option>
+      <option value="alternate-row">Alternate by row</option>
+      <option value="alternate-both">Checkerboard flip</option>
+      <option value="random">Random per tile</option>
+    </select>
+    <label>Opacity <span class="v" id="v-opacity">0.85</span></label>
+    <input type="range" id="opacity" min="0.05" max="1" step="0.01" value="0.85">
+    <label>Scale <span class="v" id="v-scale">1.00</span></label>
+    <input type="range" id="scale" min="0.3" max="2.5" step="0.01" value="1">
+  </div>
+
+  <div class="sec">
+    <h2>Overlap</h2>
+    <label>Layers per cell <span class="v" id="v-layers">1</span></label>
+    <input type="range" id="layers" min="1" max="8" step="1" value="1">
+    <label>Offset amount <span class="v" id="v-ov-offset">0.30</span></label>
+    <input type="range" id="ov-offset" min="0" max="1" step="0.01" value="0.3">
+    <label>Layer scale decay <span class="v" id="v-ov-scale">0.85</span></label>
+    <input type="range" id="ov-scale" min="0.4" max="1.1" step="0.01" value="0.85">
+    <label>Layer opacity decay <span class="v" id="v-ov-alpha">0.70</span></label>
+    <input type="range" id="ov-alpha" min="0.2" max="1" step="0.01" value="0.7">
+    <label>Blend</label>
+    <select id="blend">
+      <option value="source-over">Normal</option>
+      <option value="screen">Screen</option>
+      <option value="multiply">Multiply</option>
+      <option value="overlay">Overlay</option>
+      <option value="difference">Difference</option>
+      <option value="exclusion">Exclusion</option>
+      <option value="hard-light">Hard Light</option>
+    </select>
+  </div>
+
+  <div class="sec">
+    <h2>Color</h2>
+    <select id="pal">
+      <optgroup label="Fritz channels">
+        <option value="fritz">Fritz (all 3 channels)</option>
+        <option value="flarepop-only">Flarepop only</option>
+        <option value="coolsweep-only">Coolsweep only</option>
+        <option value="wiretree-only">Wiretree only</option>
+      </optgroup>
+      <optgroup label="Fritz pairs">
+        <option value="hotcatch">Hotcatch (Flarepop + Coolsweep)</option>
+        <option value="suedejacket">Suedejacket (Flarepop + Wiretree)</option>
+        <option value="deepfield">Deepfield (Coolsweep + Wiretree)</option>
+      </optgroup>
+      <optgroup label="Mono">
+        <option value="mono-w">Mono white</option>
+        <option value="mono-b">Mono black</option>
+      </optgroup>
+    </select>
+    <label>Color mode</label>
+    <select id="color-mode">
+      <option value="per-layer">Per layer</option>
+      <option value="random">Random per tile</option>
+      <option value="row">Per row</option>
+      <option value="col">Per column</option>
+      <option value="diagonal">Diagonal</option>
+      <option value="radial">Radial from center</option>
+      <option value="checker">Checkerboard</option>
+    </select>
+  </div>
+
+  <div class="sec">
+    <h2>Background</h2>
+    <select id="bg">
+      <option value="#0A0A0F">Carbon (near black)</option>
+      <option value="#000000">Pure black</option>
+      <option value="#FFFFFF">Halo (white)</option>
+      <option value="#F8F6F3">Warm white</option>
+    </select>
+  </div>
+
+  <div class="sec">
+    <button id="btn-seed">Regenerate</button>
+    <button id="btn-png" class="btn-primary">Export PNG</button>
+    <button id="btn-batch">Batch export (12 seeds)</button>
+    <div id="batch-status" style="font-size:11px;color:#888;margin-top:8px;letter-spacing:0.04em;text-transform:none"></div>
+    <p class="footer-note">Outputs PNG at canvas resolution. For motion or advanced glitch effects, use the internal generator.</p>
+  </div>
+</div>
+<div class="wrap" id="wrap"><canvas id="c"></canvas></div>
+
+<script>
+const C = document.getElementById('c'), X = C.getContext('2d'), wrap = document.getElementById('wrap');
+let W, H, seed = Math.random() * 1e4;
+
+const PALS = {
+  fritz: ['#FF00E5','#00D862','#1A7AFF'],
+  'flarepop-only': ['#FF00E5'],
+  'wiretree-only': ['#00D862'],
+  'coolsweep-only': ['#1A7AFF'],
+  hotcatch: ['#FF00E5','#1A7AFF'],
+  suedejacket: ['#FF00E5','#00D862'],
+  deepfield: ['#1A7AFF','#00D862'],
+  'mono-w': ['#FFFFFF','#CCCCCC','#999999'],
+  'mono-b': ['#333333','#555555','#777777'],
+};
+
+function ns(x, y, s) {
+  const a = Math.sin(x * 12.9898 + y * 78.233 + s) * 43758.5453;
+  return a - Math.floor(a);
+}
+
+function resize() {
+  const r = devicePixelRatio || 1;
+  W = wrap.clientWidth; H = wrap.clientHeight;
+  C.style.width = W + 'px'; C.style.height = H + 'px';
+  C.width = W * r; C.height = H * r;
+  X.setTransform(r, 0, 0, r, 0, 0);
+  render();
+}
+window.addEventListener('resize', resize);
+
+function v(id) { return parseFloat(document.getElementById(id).value); }
+
+function updateLabels() {
+  document.querySelectorAll('input[type="range"]').forEach(el => {
+    const l = document.getElementById('v-' + el.id);
+    if (!l) return;
+    const ints = ['cols','rows','cell','gap','layers'];
+    l.textContent = ints.includes(el.id) ? parseInt(el.value) : parseFloat(el.value).toFixed(2);
+  });
+}
+
+document.querySelectorAll('input[type="range"], select').forEach(el => {
+  el.addEventListener('input', () => { updateLabels(); render(); });
+});
+document.getElementById('btn-seed').onclick = () => { seed = Math.random() * 1e4; render(); };
+
+function triVerts(cellSize, dir) {
+  const half = cellSize * 0.5;
+  if (dir === 'right') {
+    return [[-half, -half], [-half, half], [half, half]];
+  } else {
+    return [[half, -half], [half, half], [-half, half]];
+  }
+}
+
+function getTileDir(baseDir, col, row, tileFacingMode) {
+  const flip = d => d === 'right' ? 'left' : 'right';
+  switch (tileFacingMode) {
+    case 'fixed': return baseDir;
+    case 'alternate-col': return col % 2 === 0 ? baseDir : flip(baseDir);
+    case 'alternate-row': return row % 2 === 0 ? baseDir : flip(baseDir);
+    case 'alternate-both': return (col + row) % 2 === 0 ? baseDir : flip(baseDir);
+    case 'random': return ns(col, row, seed + 300) > 0.5 ? 'right' : 'left';
+    default: return baseDir;
+  }
+}
+
+function getPatternDir(mode, baseDir, col, row, cx, cy) {
+  switch (mode) {
+    case 'truchet': return ns(col, row, seed + 100) > 0.5 ? 'right' : 'left';
+    case 'pinwheel': return (col + row) % 2 === 0 ? 'right' : 'left';
+    case 'diamond': return (col % 2 === row % 2) ? 'right' : 'left';
+    case 'herringbone': return row % 2 === 0 ? (col % 2 === 0 ? 'right' : 'left') : (col % 2 === 0 ? 'left' : 'right');
+    case 'quilt': { const q = (Math.floor(col/2) + Math.floor(row/2)) % 2; return q === 0 ? 'right' : 'left'; }
+    case 'scatter': return ns(col, row, seed + 150) > 0.5 ? 'right' : 'left';
+    case 'radial': { const dx = cx - W/2, dy = cy - H/2; return Math.atan2(dy, dx) > 0 ? 'right' : 'left'; }
+    case 'wave': return Math.sin(col * 0.6 + row * 0.4) > 0 ? 'right' : 'left';
+    default: return null;
+  }
+}
+
+function drawTriAt(cx, cy, verts, color, alpha, blendMode, scaleF) {
+  X.save();
+  X.translate(cx, cy);
+  if (scaleF && scaleF !== 1) X.scale(scaleF, scaleF);
+  X.globalAlpha = alpha;
+  X.globalCompositeOperation = blendMode || 'source-over';
+  X.beginPath();
+  X.moveTo(verts[0][0], verts[0][1]);
+  X.lineTo(verts[1][0], verts[1][1]);
+  X.lineTo(verts[2][0], verts[2][1]);
+  X.closePath();
+  X.fillStyle = color;
+  X.fill();
+  X.restore();
+}
+
+function getColor(pal, col, row, cols, rows, mode, layerIdx) {
+  const colors = PALS[pal] || PALS.fritz;
+  let idx = 0;
+  switch (mode) {
+    case 'random': idx = Math.floor(ns(col, row, seed) * colors.length); break;
+    case 'per-layer': idx = layerIdx % colors.length; break;
+    case 'row': idx = row % colors.length; break;
+    case 'col': idx = col % colors.length; break;
+    case 'diagonal': idx = (col + row) % colors.length; break;
+    case 'radial': {
+      const dx = col - cols/2, dy = row - rows/2;
+      idx = Math.floor(Math.sqrt(dx*dx + dy*dy)) % colors.length;
+      break;
+    }
+    case 'checker': idx = (col + row) % 2 === 0 ? 0 : (colors.length > 1 ? 1 : 0); break;
+  }
+  return colors[Math.abs(idx) % colors.length];
+}
+
+function render() {
+  const bg = document.getElementById('bg').value;
+  const mode = document.getElementById('mode').value;
+  const cols = Math.round(v('cols'));
+  const rows = Math.round(v('rows'));
+  const cell = v('cell');
+  const gap = v('gap');
+  const opacity = v('opacity');
+  const scale = v('scale');
+  const pal = document.getElementById('pal').value;
+  const colorMode = document.getElementById('color-mode').value;
+  const numLayers = Math.round(v('layers'));
+  const ovOffset = v('ov-offset');
+  const ovScale = v('ov-scale');
+  const ovAlpha = v('ov-alpha');
+  const blend = document.getElementById('blend').value;
+  const baseDir = document.getElementById('facing').value;
+  const tileFacingMode = document.getElementById('tile-facing').value;
+
+  wrap.style.background = bg;
+  X.fillStyle = bg;
+  X.fillRect(0, 0, W, H);
+
+  const totalW = cols * (cell + gap);
+  const totalH = rows * (cell + gap);
+  const offX = (W - totalW) / 2 + cell / 2;
+  const offY = (H - totalH) / 2 + cell / 2;
+
+  for (let r = 0; r < rows; r++) {
+    for (let c = 0; c < cols; c++) {
+      const cx = offX + c * (cell + gap);
+      const cy = offY + r * (cell + gap);
+
+      let dir = getPatternDir(mode, baseDir, c, r, cx, cy);
+      if (dir === null) dir = getTileDir(baseDir, c, r, tileFacingMode);
+
+      const verts = triVerts(cell, dir);
+      const isOverlap = mode.startsWith('ov-');
+      const effectiveLayers = isOverlap ? Math.max(numLayers, 2) : numLayers;
+
+      for (let li = 0; li < effectiveLayers; li++) {
+        let lCx = cx, lCy = cy;
+        let lScale = scale;
+        let lAlpha = opacity;
+        let lBlend = li === 0 ? 'source-over' : blend;
+        let lDir = dir;
+        let lVerts = verts;
+
+        if (li > 0) {
+          lAlpha *= Math.pow(ovAlpha, li);
+          const off = cell * ovOffset;
+
+          switch (mode) {
+            case 'ov-stack':
+              lCx += li * off * 0.35;
+              lCy += li * off * 0.2;
+              lScale *= Math.pow(ovScale, li);
+              break;
+            case 'ov-fan':
+              lDir = li % 2 === 0 ? 'right' : 'left';
+              lVerts = triVerts(cell, lDir);
+              lScale *= Math.pow(ovScale, li * 0.5);
+              break;
+            case 'ov-nest':
+              lScale *= Math.pow(ovScale, li);
+              break;
+            case 'ov-mirror':
+              lDir = dir === 'right' ? 'left' : 'right';
+              lVerts = triVerts(cell, lDir);
+              break;
+            case 'ov-cross':
+              lDir = li % 2 === 0 ? dir : (dir === 'right' ? 'left' : 'right');
+              lVerts = triVerts(cell, lDir);
+              lScale *= Math.pow(ovScale, li * 0.3);
+              break;
+            case 'ov-shingle':
+              lCy += li * off * 0.5;
+              lCx += (li % 2 === 1 ? 1 : -1) * off * 0.15;
+              lScale *= Math.pow(ovScale, li * 0.6);
+              break;
+            case 'ov-weave':
+              lCx += (li % 2 === 0 ? 1 : -1) * off * 0.4;
+              lDir = li % 2 === 0 ? dir : (dir === 'right' ? 'left' : 'right');
+              lVerts = triVerts(cell, lDir);
+              lScale *= Math.pow(ovScale, li * 0.4);
+              break;
+            case 'ov-cascade':
+              lCx += li * off * 0.25;
+              lCy += li * off * 0.4;
+              lScale *= Math.pow(ovScale, li * 0.5);
+              break;
+            case 'ov-kaleidoscope':
+              lDir = li % 2 === 0 ? 'right' : 'left';
+              lVerts = triVerts(cell, lDir);
+              lScale *= Math.pow(ovScale, Math.floor(li / 2) * 0.5);
+              break;
+            default:
+              lCx += li * off * 0.2;
+              lCy += li * off * 0.1;
+              lScale *= Math.pow(ovScale, li);
+              break;
+          }
+        }
+
+        const color = getColor(pal, c, r, cols, rows, colorMode, li);
+        drawTriAt(lCx, lCy, li > 0 ? lVerts : verts, color, lAlpha, lBlend, lScale);
+      }
+    }
+  }
+}
+
+// Export PNG
+document.getElementById('btn-png').onclick = () => {
+  const l = document.createElement('a');
+  l.download = 'fritz-pattern-' + document.getElementById('mode').value + '-' + Date.now() + '.png';
+  l.href = C.toDataURL('image/png');
+  l.click();
+};
+
+// Batch export
+document.getElementById('btn-batch').onclick = async () => {
+  const status = document.getElementById('batch-status');
+  const count = 12;
+  const origSeed = seed;
+  const mode = document.getElementById('mode').value;
+  for (let i = 0; i < count; i++) {
+    seed = Math.random() * 1e4;
+    render();
+    const blob = await new Promise(r => C.toBlob(r, 'image/png'));
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'fritz-pattern-' + mode + '-' + String(i + 1).padStart(2, '0') + '.png';
+    a.click();
+    URL.revokeObjectURL(url);
+    status.textContent = (i + 1) + ' / ' + count + ' exported…';
+    await new Promise(r => setTimeout(r, 80));
+  }
+  seed = origSeed;
+  status.textContent = 'Done — ' + count + ' PNGs exported.';
+};
+
+updateLabels();
+resize();
+</script>
+</body>
+</html>
