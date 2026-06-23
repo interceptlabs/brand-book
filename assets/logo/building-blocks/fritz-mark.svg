@@ -1,0 +1,33 @@
+<!--
+  FRITZ MARK — building block (the standalone triangle / "Icon" version,
+  Figma <Logos> 6:3 Icon = Group 1; vectors live on Logo Vectors page 513:27).
+
+  The complete designed Fritz: a right-lean glitch triangle. Base = Flarepop #FF00E5
+  plus the locked chromatic-aberration accent palette (channel-split + scan + shard layers).
+  Use ALONE for favicons, app icons, social avatars, watermark, or as a pattern seed.
+  For a full lockup, inline a canonical ../intercept-lockup-{baseline|centered}.svg symbol.
+
+  CHANNEL RECOLOR RULE (matches the ../pack/ recolor exactly):
+    swap ONLY the base fill #FF00E5 → channel primary
+      Coolsweep  #1A7AFF   ·   Wiretree  #00D862
+    KEEP every accent hex unchanged: #8846C9 #1DABC1 #A855F7 #6366F1 #22D3EE
+                                     #5154C4 #FF44F9 #FFA9F8 #FF52F9
+  Never recolor the accent palette; never flatten to a single solid; never CSS-recreate.
+  Sanitized wrapper. viewBox 0 0 65.8609 63.9998 (the Icon's native bbox).
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 65.8609 63.9998" width="65.8609" height="63.9998" fill="none">
+  <g id="Group 1">
+    <path d="M39.673 26.7875L44.5095 21.1099H62.0759V26.7875H39.673Z" fill="#8846C9"/>
+    <path d="M47.0004 7.49024L51.2545 2.50822H53.0176V7.49024H47.0004Z" fill="#1DABC1"/>
+    <path d="M13.8572 8.52531H6.99887V12.8441H13.8572V8.52531Z" fill="#8846C9"/>
+    <path d="M65.8608 29.0517H57.757V35.2954H65.8608V29.0517Z" fill="#1DABC1"/>
+    <path opacity="0.7" d="M53.918 29.1486V63.5754H0L29.2627 29.1486H53.918ZM53.918 26.7228H31.3242L45.623 9.90056H53.918V26.7228ZM53.918 7.4738H47.6855L53.918 0.141767V7.4738Z" fill="#A855F7"/>
+    <path opacity="0.42" d="M55.2768 29.1485V63.4336H1.35887L30.5015 29.1485H55.2768ZM55.2768 26.7227H32.563L46.8618 9.90041H55.2768V26.7227ZM55.2768 7.47366H48.9243L55.2768 2.28882e-05V7.47366Z" fill="#6366F1"/>
+    <path opacity="0.7" d="M55.957 29.1492V63.9998H2.03809L31.6611 29.1492H55.957ZM55.957 26.7225H33.7246L48.0234 9.90022H55.957V26.7225ZM55.957 7.47347H50.0859L55.957 0.566239V7.47347Z" fill="#22D3EE"/>
+    <path d="M55.0503 29.2138V63.8583H1.13232L30.5796 29.2138H55.0503ZM55.0503 26.787H32.6421L46.9819 9.9169H55.0503V26.787ZM55.0503 7.49014H49.0444L55.0503 0.424712V7.49014Z" fill="#FF00E5"/>
+    <path d="M44.8652 32.5619H40.9185V35.3926H44.8652V32.5619Z" fill="#5154C4"/>
+    <path d="M55.0558 26.7875H39.673L44.5095 21.1099H55.0558V26.7875Z" fill="#FF44F9"/>
+    <path d="M49.0384 7.49014L53.0175 2.81545V7.49014H49.0384Z" fill="#FFA9F8"/>
+    <path d="M40.9185 32.5619H44.8652V35.3926H40.9185V32.5619Z" fill="#FF52F9"/>
+  </g>
+</svg>

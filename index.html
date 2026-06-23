@@ -519,6 +519,25 @@
       color: var(--halo-500);
       margin-top: -8px;
     }
+    .download-card--wide { grid-column: 1 / -1; }
+    .asset-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .asset-links a {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.03em;
+      color: var(--halo-300);
+      text-decoration: none;
+      padding: 6px 10px;
+      border: 1px solid var(--carbon-100);
+      border-radius: 6px;
+      transition: border-color .15s, color .15s;
+      white-space: nowrap;
+    }
+    .asset-links a:hover { border-color: var(--flarepop); color: var(--halo); }
 
     /* === Footer === */
     footer {
@@ -726,7 +745,7 @@
       </div>
     </div>
 
-    <p class="muted" style="margin-top:32px;font-size:13px;">Need the full kit? The downloads section below has all 12 SVG variants — both alignment options, all three channels, both wordmark colors — plus EPS and PNG.</p>
+    <p class="muted" style="margin-top:32px;font-size:13px;">Need the full kit? The downloads section below has every lockup variant — both alignments, all three channels, both backgrounds — plus the mark, wordmark, EPS, and high-res PNG.</p>
   </div>
 </section>
 
@@ -939,32 +958,98 @@
     <header class="section-head">
       <span class="section-num">06 · Downloads</span>
       <h2>Logos, tokens, and tools.</h2>
-      <p class="lede">Logos, tokens, the Brand OS, and the pattern generators — all in one place.</p>
+      <p class="lede">Logos, tokens, typefaces, and tools — download any single asset, or grab everything in one zip.</p>
     </header>
 
     <div class="download-grid">
 
-      <a class="download-card" href="assets/logo/intercept-logo-pack.zip" download>
-        <h3><span class="ico">▲</span>Logo pack</h3>
-        <p>12 SVG lockups — 2 alignment options × 3 channels × 2 wordmark colors — plus the EPS source.</p>
-        <span class="download-card__meta">SVG · EPS · ZIP — 195 KB</span>
+      <a class="download-card download-card--wide" href="assets/logo/intercept-brand-assets.zip" download>
+        <h3><span class="ico">▲</span>Complete brand assets</h3>
+        <p>Everything on this page in one download — all 14 SVG lockups, the standalone mark, the wordmark, high-res PNGs, the EPS print source, and the token sheet. Sorted into folders with a README.</p>
+        <span class="download-card__meta">ZIP — SVG · PNG · EPS · CSS — ~2.8 MB</span>
+      </a>
+
+      <div class="download-card">
+        <h3><span class="ico">▲</span>Lockups — baseline</h3>
+        <p>Wordmark with the triangle on the wordmark baseline. Three channels × two backgrounds. Click to download a single SVG.</p>
+        <div class="asset-links">
+          <a href="assets/logo/pack/intercept-lockup-baseline-flarepop-on-carbon.svg" download>Flarepop / dark</a>
+          <a href="assets/logo/pack/intercept-lockup-baseline-coolsweep-on-carbon.svg" download>Coolsweep / dark</a>
+          <a href="assets/logo/pack/intercept-lockup-baseline-wiretree-on-carbon.svg" download>Wiretree / dark</a>
+          <a href="assets/logo/pack/intercept-lockup-baseline-flarepop-on-halo.svg" download>Flarepop / light</a>
+          <a href="assets/logo/pack/intercept-lockup-baseline-coolsweep-on-halo.svg" download>Coolsweep / light</a>
+          <a href="assets/logo/pack/intercept-lockup-baseline-wiretree-on-halo.svg" download>Wiretree / light</a>
+        </div>
+      </div>
+
+      <div class="download-card">
+        <h3><span class="ico">▲</span>Lockups — centered</h3>
+        <p>Wordmark with the triangle vertically centered. Three channels × two backgrounds. Click to download a single SVG.</p>
+        <div class="asset-links">
+          <a href="assets/logo/pack/intercept-lockup-centered-flarepop-on-carbon.svg" download>Flarepop / dark</a>
+          <a href="assets/logo/pack/intercept-lockup-centered-coolsweep-on-carbon.svg" download>Coolsweep / dark</a>
+          <a href="assets/logo/pack/intercept-lockup-centered-wiretree-on-carbon.svg" download>Wiretree / dark</a>
+          <a href="assets/logo/pack/intercept-lockup-centered-flarepop-on-halo.svg" download>Flarepop / light</a>
+          <a href="assets/logo/pack/intercept-lockup-centered-coolsweep-on-halo.svg" download>Coolsweep / light</a>
+          <a href="assets/logo/pack/intercept-lockup-centered-wiretree-on-halo.svg" download>Wiretree / light</a>
+        </div>
+      </div>
+
+      <div class="download-card">
+        <h3><span class="ico">▲</span>Mark &amp; wordmark</h3>
+        <p>The triangle mark and the wordmark as standalone building blocks — for favicons, app icons, and tight spaces.</p>
+        <div class="asset-links">
+          <a href="assets/logo/intercept-mark-flarepop.svg" download>Mark (SVG)</a>
+          <a href="assets/logo/building-blocks/intercept-wordmark.svg" download>Wordmark (SVG)</a>
+        </div>
+      </div>
+
+      <div class="download-card">
+        <h3><span class="ico">PX</span>High-res raster</h3>
+        <p>5600&nbsp;px PNG lockups for slides, docs, and partners who can't take vector — on a Carbon ground or transparent.</p>
+        <div class="asset-links">
+          <a href="assets/logo/exports/intercept-lockup-centered-flarepop-on-carbon-5600.png" download>On carbon</a>
+          <a href="assets/logo/exports/intercept-lockup-centered-flarepop-transparent-5600.png" download>Transparent</a>
+        </div>
+      </div>
+
+      <a class="download-card" href="assets/logo/intercept-lockup.eps" download>
+        <h3><span class="ico">AI</span>Vector source (EPS)</h3>
+        <p>Editable EPS lockup for print, large-format, and any Adobe Illustrator workflow.</p>
+        <span class="download-card__meta">EPS — left/right lockup, fully editable</span>
       </a>
 
       <a class="download-card" href="tokens.css" download>
-        <h3><span class="ico">{ }</span>Token sheet</h3>
-        <p>Color, type, spacing, radius, stroke, and opacity tokens as CSS custom properties. Drop into any project.</p>
+        <h3><span class="ico">{ }</span>Design tokens</h3>
+        <p>Color, type, spacing, radius, stroke, and opacity as CSS custom properties. Drop into any project.</p>
         <span class="download-card__meta">CSS — pre-wired for dark + light surfaces</span>
       </a>
 
+      <div class="download-card">
+        <h3><span class="ico">Aa</span>Typefaces</h3>
+        <p>All three are free on Google Fonts. Instrument Sans for display, Inter for body, Geist Mono for labels and code.</p>
+        <div class="asset-links">
+          <a href="https://fonts.google.com/specimen/Instrument+Sans" target="_blank" rel="noopener">Instrument Sans ↗</a>
+          <a href="https://fonts.google.com/specimen/Inter" target="_blank" rel="noopener">Inter ↗</a>
+          <a href="https://fonts.google.com/specimen/Geist+Mono" target="_blank" rel="noopener">Geist Mono ↗</a>
+        </div>
+      </div>
+
       <a class="download-card" href="generators/fritz-pattern-public.html" target="_blank" rel="noopener">
         <h3><span class="ico">⚙</span>Pattern generator</h3>
-        <p>Fritz triangle tessellations for section backgrounds, report covers, and editorial textures. Open in a browser, tweak, export PNG.</p>
+        <p>Triangle tessellations for section backgrounds, report covers, and editorial textures. Open, tweak, export PNG.</p>
         <span class="download-card__meta">HTML — runs in-browser, no install</span>
+      </a>
+
+      <a class="download-card" href="assets/logo/animated/index.html" target="_blank" rel="noopener">
+        <h3><span class="ico">▸</span>Animated lockup</h3>
+        <p>The lockup's intro motion — a three-second build that settles on the locked Flarepop frame, with a hover replay.</p>
+        <span class="download-card__meta">HTML — view the motion, copy the markup</span>
       </a>
 
     </div>
 
-    <p class="muted" style="margin-top:32px;font-size:13px;">Working from a brand partner brief? The kit's local replica at <code>~/Creative-Projects/intercept-brand-kit/</code> has source SVGs, raw exports, and the cached Figma node index.</p>
+    <p class="muted" style="margin-top:32px;font-size:13px;">Everything here is the canonical version. For a custom format or a question about usage, reach us at <a href="mailto:hello@interceptgroup.com" style="color:var(--coolsweep);">hello@interceptgroup.com</a>.</p>
   </div>
 </section>
 
